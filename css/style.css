@@ -1,0 +1,36 @@
+.container {
+    margin: auto;
+    max-width: 1200px;
+}
+
+.flex-container {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px auto;
+    width: 550px;
+}
+
+.flex-element {
+    align-items: center;
+    background-color: #90961a;
+    display: flex;
+    flex-basis: 50px;
+    height: 50px;
+    justify-content: center;
+}
+
+.flex-element:hover {
+    background-color: #1A018E;
+    cursor: pointer;
+}
+
+.flags-img {
+    width: 70%;
+}
+
+.open {
+    background-color: #1A018E;
+    color: #ffffff;
+}
