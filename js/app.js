@@ -31,17 +31,19 @@ var Game = {
     },
 
     generateBombs: function () {
-        var x, y;
+        var x, y, count = 0;
         for( var i = 0; i < this.countBombs; i++ ) {
             x = parseInt( Math.random() * this.countBombs );
             y = parseInt( Math.random() * this.countBombs );
 
-            if( this.area[x][y].isBomb && !this.area[x][y].isOpen ) {
+            if( this.area[x][y].isBomb === true || this.area[x][y].isOpen === true ) {
                 i--;
             } else {
                 this.area[x][y].isBomb = true;
+                count++;
             }
         }
+        console.log(count, this.area);
     },
 
     showBombs: function() {
@@ -78,13 +80,13 @@ var Game = {
             return;
         }
 
+        this.area[x][y].isOpen = true;
+
         if( this.isInitBombs === false ) {
             this.generateBombs();
             this.isInitBombs = true;
-            this.showBombs();
         }
 
-        this.area[x][y].isOpen = true;
 
         for( var i = +x - 1; i < +x + 2; i++ ) {
             for( var j = +y - 1; j < +y + 2; j++ ) {
@@ -165,7 +167,8 @@ var Game = {
             alert('Congratulations');
             setTimeout(function () {
                 self.clearArea();
-                Game.start();
+                self.start();
+
             }, 2000);
         }
     },
