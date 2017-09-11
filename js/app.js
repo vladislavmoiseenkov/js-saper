@@ -54,6 +54,10 @@ var Game = {
         for( var i = 0; i < this.sizeX; i++ ) {
             for( var j = 0; j < this.sizeY; j++ ) {
                 if( this.area[i][j].isBomb === true ) {
+                    var flag = document.getElementsByClassName('flex-element')[+count].childNodes[0];
+                    if( flag ) {
+                        document.getElementsByClassName('flex-element')[+count].removeChild(flag);
+                    }
                     var bomb = document.createElement('img');
                     bomb.setAttribute('src', 'img/bomb.png');
                     bomb.className = 'flags-img';
