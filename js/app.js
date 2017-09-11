@@ -6,7 +6,9 @@ var Game = {
     isInitBombs: false,
 
     createArea: function () {
-        var container = document.getElementById('container');
+        var container = document.getElementById('container'),
+        _area = document.createElement('div');
+        _area.setAttribute('id', 'area');
 
         for( var i = 0; i < this.sizeX; i++ ) {
             this.area[i] = [];
@@ -26,8 +28,9 @@ var Game = {
                 flexElement.setAttribute('data-col', j);
                 flexContainer.appendChild( flexElement );
             }
-            container.appendChild( flexContainer );
+            _area.appendChild( flexContainer );
         }
+        container.appendChild(_area);
     },
 
     generateBombs: function () {
@@ -43,7 +46,6 @@ var Game = {
                 count++;
             }
         }
-        console.log(count, this.area);
     },
 
     showBombs: function() {
@@ -174,10 +176,10 @@ var Game = {
     },
 
     clearArea: function () {
-        for( var i = this.sizeX; i > -1; i--  ) {
-            console.log(document.getElementById('container').removeChild(document.getElementById('container').childNodes[i]));
-            document.getElementById('container').removeChild(document.getElementById('container').childNodes[i]);
-        }
+        var container = document.getElementById('container'),
+            _area = document.getElementById('area');
+
+        container.removeChild(_area);
     },
 
     delegateEvents: function() {
