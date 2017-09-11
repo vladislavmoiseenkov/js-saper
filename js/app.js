@@ -71,7 +71,7 @@ var Game = {
             this.showBombs();
             setTimeout(function () {
                 self.clearArea();
-                Game.start();
+                self.start();
             }, 2000);
             return;
         }
@@ -175,6 +175,7 @@ var Game = {
 
     clearArea: function () {
         for( var i = this.sizeX; i > -1; i--  ) {
+            console.log(document.getElementById('container').removeChild(document.getElementById('container').childNodes[i]));
             document.getElementById('container').removeChild(document.getElementById('container').childNodes[i]);
         }
     },
@@ -210,6 +211,9 @@ var Game = {
     },
 
     start: function () {
+        this.area = [];
+        this.isInitBombs = false;
+
         this.createArea();
         this.delegateEvents();
     }
